@@ -28,7 +28,7 @@ pipeline {
     stages {
         stage('run') {
             steps {
-                echo 'Son Part 4 de Her dakikada tetiletecegiz'
+                echo 'Part 4 de Her dakikada tetiletecegiz'
                 sh 'python3 --version'
                 sh 'python3 pipeline.py'
             }
