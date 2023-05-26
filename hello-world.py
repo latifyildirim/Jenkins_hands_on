@@ -1,1 +1,1 @@
-print('Hello World für Guthub /github-webhook/')
+print('Hello World für Guthub github-webhook')
