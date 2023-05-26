@@ -36,19 +36,46 @@
 //     }
 // }
 
+// pipeline {
+//     agent any
+//     stages {
+//         stage('build') {
+//             steps {
+//                 echo 'Compiling the java source code'
+//                 sh 'javac Hello.java'
+//             }
+//         }
+//         stage('run') {
+//             steps {
+//                 echo 'Running the compiled java code.'
+//                 sh 'java Hello'
+//             }
+//         }
+//     }
+// }
+
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                echo 'Compiling the java source code'
-                sh 'javac Hello.java'
+                sh 'mvn -f Maven-jenkins/hello-app/pom.xml -B -DskipTests clean package'
+            }
+            post {
+                success {
+                    echo "Now Archiving the Artifacts....."
+                    archiveArtifacts artifacts: '**/*.jar'
+                }
             }
         }
-        stage('run') {
+        stage('Test') {
             steps {
-                echo 'Running the compiled java code.'
-                sh 'java Hello'
+                sh 'mvn -f Maven-jenkins/hello-app/pom.xml test'
+            }
+            post {
+                always {
+                    junit 'Maven-jenkins/hello-app/target/surefire-reports/*.xml'
+                }
             }
         }
     }
