@@ -1,0 +1,13 @@
+    1  cd /opt/
+    2  ls
+    3  wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz
+    4  ls
+    5  tar -zxvf $(ls | grep apache-maven-*-bin.tar.gz)
+    6  rm -rf $(ls | grep apache-maven-*-bin.tar.gz)
+    7  ln -s $(ls | grep apache-maven*) maven
+    8  echo 'export M2_HOME=/opt/maven' > /etc/profile.d/maven.sh
+    9  echo 'export PATH=${M2_HOME}/bin:${PATH}' >> /etc/profile.d/maven.sh
+   10  exit
+   11  exit
+   12  cd /home/ec2-user
+   13  history > maven_history.txt
