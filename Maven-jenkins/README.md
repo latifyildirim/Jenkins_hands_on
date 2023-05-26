@@ -101,7 +101,7 @@ sudo yum install git -y
 
 - For `Build`, select `Invoke top-level Maven targets`
 
-  - For `Maven Version`, select the pre-defined maven, `maven-3.8.7` 
+  - For `Maven Version`, select the pre-defined maven, `maven-3.9.2` 
   - For `Goals`, write `clean package`
   - POM: `pom.xml`
 
