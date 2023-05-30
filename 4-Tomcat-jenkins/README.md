@@ -253,7 +253,7 @@ sudo systemctl enable tomcat
 - Start Tomcat server.
 
 ```bash
-sudo systemctl start tomcat
+sudo systemctl start tomcat    # bazen 2 kez calistirmak gerekiyor
 ```
 
 - Open your browser, get your Tomcat server ec2 instance Public IPv4 DNS and paste it at address bar with 8080. 
