@@ -64,57 +64,57 @@ output "tomcatserverspublicip" {
   value = aws_instance.tomcat-server.*.public_dns
 }
 
-# resource "null_resource" "prod-tomcat-cfg2" {
-#   connection {
-#     host = aws_instance.tomcat-server[1].public_ip
-#     type = "ssh"
-#     user = "ec2-user"
-#     private_key = file("~/.ssh/${var.mykey}.pem")
-#     # Do not forget to define your key file path correctly!
-#   }
+resource "null_resource" "prod-tomcat-cfg2" {
+  connection {
+    host = aws_instance.tomcat-server[1].public_ip
+    type = "ssh"
+    user = "ec2-user"
+    private_key = file("~/.ssh/${var.mykey}.pem")
+    # Do not forget to define your key file path correctly!
+  }
 
-#   provisioner "remote-exec" {
-#     inline = [
-#       "sudo chmod 777 /opt/tomcat/conf/tomcat-users.xml",
-#       "sudo chmod 777 /opt/tomcat/webapps/host-manager/META-INF/context.xml",
-#       "sudo chmod 777 /opt/tomcat/webapps/manager/META-INF/context.xml",
-#       "sudo chmod 777 /etc/systemd/system"
-#     ]
-#   }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo chmod 777 /opt/tomcat/conf/tomcat-users.xml",
+      "sudo chmod 777 /opt/tomcat/webapps/host-manager/META-INF/context.xml",
+      "sudo chmod 777 /opt/tomcat/webapps/manager/META-INF/context.xml",
+      "sudo chmod 777 /etc/systemd/system"
+    ]
+  }
 
-#   provisioner "file" {
-#     source = "./tomcat-users.xml"
-#     destination = "/opt/tomcat/conf/tomcat-users.xml"
-#   }
+  provisioner "file" {
+    source = "./tomcat-users.xml"
+    destination = "/opt/tomcat/conf/tomcat-users.xml"
+  }
 
-#   provisioner "file" {
-#     source = "./contexthost-mng.xml"
-#     destination = "/opt/tomcat/webapps/host-manager/META-INF/context.xml"
-#   }
+  provisioner "file" {
+    source = "./contexthost-mng.xml"
+    destination = "/opt/tomcat/webapps/host-manager/META-INF/context.xml"
+  }
 
-#   provisioner "file" {
-#     source = "./contextmng.xml"
-#     destination = "/opt/tomcat/webapps/manager/META-INF/context.xml"
-#   }
+  provisioner "file" {
+    source = "./contextmng.xml"
+    destination = "/opt/tomcat/webapps/manager/META-INF/context.xml"
+  }
 
-#   provisioner "remote-exec" {
-#     inline = [
-#       "sudo /opt/tomcat/bin/shutdown.sh",
-#       "sudo /opt/tomcat/bin/startup.sh"
-#     ]
-#   }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo /opt/tomcat/bin/shutdown.sh",
+      "sudo /opt/tomcat/bin/startup.sh"
+    ]
+  }
 
-#   provisioner "file" {
-#     source = "./tomcat.service"
-#     destination = "/etc/systemd/system/tomcat.service"
-#   }
+  provisioner "file" {
+    source = "./tomcat.service"
+    destination = "/etc/systemd/system/tomcat.service"
+  }
 
-#   provisioner "remote-exec" {
-#     inline = [
-#       "sudo systemctl daemon-reload",
-#       "sudo systemctl enable tomcat",
-#       "sudo systemctl start tomcat"
-#     ]
-#   }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo systemctl daemon-reload",
+      "sudo systemctl enable tomcat",
+      "sudo systemctl start tomcat"
+    ]
+  }
 
-# }
+}
