@@ -218,5 +218,7 @@ At the end of the this hands-on training, students will be able to;
 
     Script Path: Jenkinsfile
 ```
+- `sudo usermod -s /bin/bash jenkins`  --> jenkins kullanicisina ulasiriz 
+- `sudo su - jenkins`                  --> ve bu kullanici ile calisiriz.
 
 - `Save` and `Build Now` and observe the behavior.
