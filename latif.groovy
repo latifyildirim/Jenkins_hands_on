@@ -29,5 +29,5 @@ job('latif-Via-DSL') {
         // archiveJunit('**/target/surefire-reports/*.xml')
     }
 }
-// Buradan aldik
+// Bu Web sayfasindan gerekli yardimi aldik.
 // https://jenkinsci.github.io/job-dsl-plugin/#path/job
