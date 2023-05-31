@@ -20,7 +20,7 @@ job('latif-Via-DSL') {
             // properties(skipTests: true)
             mavenInstallation('maven-3.9.2')  // Bunu 'Global Tool Configuration' daki Maven Name ile ayni olmali
             // providedSettings('central-mirror')
-            rootPOM('5-Java-tomcat-sample-main-and-Deployment-jenkins/pom.xml')  // yukaridaki 4. satir ile baglantili #### Ve calistiii :D:D:D:D:D
+            rootPOM('5-Deployment-jenkins-and-Java-tomcat-sample-main/pom.xml')  // yukaridaki 4. satir ile baglantili #### Ve calistiii :D:D:D:D:D
             // rootPOM('pom.xml')
         }
     }
