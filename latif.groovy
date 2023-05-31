@@ -2,7 +2,7 @@ job('latif-Via-DSL') {
     description('My first job DSL')
     scm {
 //         github('https://github.com/latifyildirim/Jenkins_hands_on.git')        // Burada  5-Java-tomcat-sample-main-and-Deployment-jenkins/pom.xml   dosyam alt dizinde olmadigi icin calistiramadim, sonra bakacagim.
-        github('https://github.com/clarusway-aws-devops/java-tomcat-sample-main')
+        github('https://github.com/clarusway-aws-devops/java-tomcat-sample-main.git')
     }
     triggers {
         scm('* * * * *')
