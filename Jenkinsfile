@@ -93,8 +93,8 @@ pipeline {
                   steps {
                         echo 'Building Sample Maven Project'
                   }
-            }  #  Bu MavenProjectDSL.groovy icin yapildi.
-            stage('Deploy') {
+            }                                                            // # Bu MavenProjectDSL.groovy icin yapildi.
+            stage('Deploy') {                                            // # ve latif.groovy icin. 
                   steps {
                         echo "Deploying in Staging Area"
                   }
