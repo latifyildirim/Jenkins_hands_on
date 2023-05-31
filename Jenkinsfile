@@ -54,29 +54,55 @@
 //     }
 // }
 
+// pipeline {
+//     agent any
+//     stages {
+//         stage('Build') {
+//             steps {
+//                 sh 'mvn -f Maven-jenkins/hello-app/pom.xml -B -DskipTests clean package'
+//             }
+//             post {
+//                 success {
+//                     echo "Now Archiving the Artifacts....."
+//                     archiveArtifacts artifacts: '**/*.jar'
+//                 }
+//             }
+//         }
+//         stage('Test') {
+//             steps {
+//                 sh 'mvn -f Maven-jenkins/hello-app/pom.xml test'
+//             }
+//             post {
+//                 always {
+//                     junit 'Maven-jenkins/hello-app/target/surefire-reports/*.xml'
+//                 }
+//             }
+//         }
+//     }
+// }
+
 pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn -f Maven-jenkins/hello-app/pom.xml -B -DskipTests clean package'
+      agent any
+      stages {
+            stage('Init') {
+                  steps {
+                        echo 'We are Starting the Init steps'
+                  }
             }
-            post {
-                success {
-                    echo "Now Archiving the Artifacts....."
-                    archiveArtifacts artifacts: '**/*.jar'
-                }
+            stage('Build') {
+                  steps {
+                        echo 'Building Sample Maven Project'
+                  }
+            }  #  Bu MavenProjectDSL.groovy icin yapildi.
+            stage('Deploy') {
+                  steps {
+                        echo "Deploying in Staging Area"
+                  }
             }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn -f Maven-jenkins/hello-app/pom.xml test'
+            stage('Deploy Production') {
+                  steps {
+                        echo "Deploying in Production Area"
+                  }
             }
-            post {
-                always {
-                    junit 'Maven-jenkins/hello-app/target/surefire-reports/*.xml'
-                }
-            }
-        }
-    }
+      }
 }
