@@ -23,6 +23,10 @@ job('latif-Via-DSL') {
             rootPOM('pom.xml')
         }
     }
+    publishers {
+        archiveArtifacts('**/*.jar')
+        // archiveJunit('**/target/surefire-reports/*.xml')
+    }
 }
 // Buradan aldik
 // https://jenkinsci.github.io/job-dsl-plugin/#path/job
